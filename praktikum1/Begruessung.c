@@ -11,15 +11,7 @@ Kurzbeschreibung: Begrüßung! *************************************************
 
 int main(void)
 {
-printf("Herzlich willkommen, ich heisse Austin!!\n");
-printf("Und tsch%c%c!\n", 129, 225);
+printf("Herzlich willkommen, ich heiße Austin!!\n");
+printf("Und tschüß!\n");
 return 0; 
-
 }
-
-/*
- * 1) write and save your program program.c
- * 2) go to terminal
- * 3) gcc program.c -o program.out
- * 4) terminal: ./program.out
- */
