@@ -22,20 +22,23 @@ int main(void)
     int x;
     float res = 0;
     float prev = 0.1;
-    int count = 0;;
+    int count = 0;
 
     printf("Bitte Zahl eingeben, die den Exponentialwert bestimmt:  \n");
     scanf("%d", &x);
 
-    /*while(prev != res)*/
     for(; prev != res; count++){
         prev = res;
         res = res + (pow(x,count))/(fakultaet(count));
 
-        printf("Res = %f\n", res);
-        printf("Pre = %f\n", prev);
+        if (prev == res) {
+            break;
+        }
 
-        // count++;
+        printf("Pre = %f\n", prev);
+        printf("Res = %f\n", res);
+        printf("\n\n");
+
     }
 
     printf("Result hat den Wert: %f\n", res);
