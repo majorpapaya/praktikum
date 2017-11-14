@@ -9,13 +9,6 @@ Kurzbeschreibung: Wurzel!
 #include <stdio.h>
 #include <math.h>
 
-/*
-float square( float r)
-{
-    return sqrt(h);
-}
-*/
-
 int main(void)
 {
     int h;
