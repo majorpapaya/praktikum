@@ -39,9 +39,13 @@ gcc praktium1/ex.c -o praktikum1/ex.out && ./praktikum1/ex.out
 
 ## saving changes to git
 
+Using the Terminal:
+
 ```bash
 git status
 git add .
 git commit -m "message goes here"
 git push
 ```
+
+Or you can optionally use the Github Desktop application which is more visual, easier to user for beginners.
