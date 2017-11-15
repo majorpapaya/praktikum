@@ -9,10 +9,10 @@ Kurzbeschreibung: Exponentialfunktion!
 #include <stdio.h>
 #include <math.h>
 
-int fakultaet(int x) {
+double fakultaet(int x) {
 	if(x > 1) {
 		return x * fakultaet(x-1);
-	}else {
+	} else {
 		return 1;
 	}
 }
@@ -20,8 +20,8 @@ int fakultaet(int x) {
 int main(void)
 {
     int x;
-    float res = 0;
-    float prev = 0.1;
+    double res = 0;
+    double prev = 0.1;
     int count = 0;
 
     printf("Bitte Zahl eingeben, die den Exponentialwert bestimmt:  \n");
@@ -35,8 +35,8 @@ int main(void)
             break;
         }
 
-        printf("Pre = %f\n", prev);
-        printf("Res = %f\n", res);
+        printf("Pre = %.20lf\n", prev);
+        printf("Res = %.20lf\n", res);
         printf("\n\n");
 
     }
