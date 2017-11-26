@@ -2,7 +2,7 @@
 Aufgabe
 Autor Maja Rother
 Datum 12.11.2017
-3.1
+3.2
 Kurzbeschreibung: Exponentialfunktion! 
 *****************************************************************/
 

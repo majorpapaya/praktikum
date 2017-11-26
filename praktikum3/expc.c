@@ -22,6 +22,9 @@ int main(void)
     int x;
     double res;
 
+    printf("Bitte Zahl eingeben, die den Exponentialwert bestimmt:  \n");
+    scanf("%d", &x);
+
     while(x != 0){
 
         printf("Bitte Zahl eingeben, die den Exponentialwert bestimmt:  \n");
