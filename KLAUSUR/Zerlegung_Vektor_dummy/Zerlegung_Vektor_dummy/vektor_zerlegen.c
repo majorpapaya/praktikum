@@ -14,7 +14,7 @@ Datum:			19. Januar 2017
 
 // Prototypen
 float skalarprodukt(float vektor_a[], float vektor_b[], int dim);
-float parallel(float vektor_a[], float vektor_b[], float skalar, int dim);
+void parallel(float vektor_a[], float vektor_b[], float vektor_p[], int dim, float skalar);
 void orthogonal(float vektor_a[], float vektor_o[], float vektor_p[], int dim);
 void eingabe(float vektor[], int dim);
 void ausgabe(float vektor[], int dim);
@@ -30,10 +30,9 @@ void flashStandardInput(void)
 // Beginn der Hauptfunktion
 int main(void) {
 	// Lokale Variablen
-	float a[10];
-	float b[10];
+	float vektor_a[10] = { 0 }, vektor_b[10] = { 0 }, vektor_parallel[10] = { 0 }, vektor_orthogonal[10] = {0};
 	float skalar;
-	int dim;
+	int dim = 0, check = 0;
 	double dim_temp;
 	float vektor_p[10];
 	//int check; (check = 0 ||
@@ -41,36 +40,39 @@ int main(void) {
 	//Abfrage der Dimension
 	do {
 		printf("Bitte geben Sie die Dimension (<= 10) der Vektoren ein: ");
-		scanf("%d", &dim_temp);
+		check = scanf("%lf", &dim_temp);
 		flashStandardInput();
-	} while (dim_temp <= 1 || dim_temp >= 10 || dim_temp != (int)dim_temp);
+	} while (check == 0 || dim_temp < 1 || dim_temp >= 10 || dim_temp != (int)dim_temp);
 	dim = (int)dim_temp;
 
 	// Abfrage der Werte
-	printf("Bitte geben Sie den Vektor a ein, der zerlegt werden soll!\n");
-	eingabe(a, dim);
-	printf("Bitte geben Sie den Vektor b ein, der zerlegt werden soll!\n");
-	eingabe(b, dim);
+	printf("\nBitte geben Sie den Vektor a ein, der zerlegt werden soll!\n");
+	eingabe(vektor_a, dim);
+	printf("\nBitte geben Sie den Vektor b ein, der zerlegt werden soll!\n");
+	eingabe(vektor_b, dim);
 
 	// Skalarprodukt
-	skalar = skalarprodukt(a, b, dim);
-	printf("Das Skalarprodukt ist %.2f", skalar);
+	skalar = skalarprodukt(vektor_a, vektor_b, dim);
+	if (skalar == 0) {
+		printf("\nIn Richtung eines Nullvektors kann nicht zerlegt werden!\n");
+		return 0;
+	}
+	//printf("\nDas Skalarprodukt ist %.2f", skalar);
 
 	//Orthogonale Zerlegung
 	printf("Die orthogonale Zerlegung des Vektors a:\n\n");
-	ausgabe(a, dim);
+	ausgabe(vektor_a, dim);
 
-	printf("in Bezug auf den Vektor b:\n\n");
-	printf("Vektor b:\n");
-	ausgabe(b, dim);
+	printf("\nin Bezug auf den Vektor b:\n\n");
+	ausgabe(vektor_b, dim);
 
-	printf("ergibt als parallele Komponente zu b:\n\n");
-	vektor_p[10] = parallel(a, b, skalar, dim);
-	ausgabe(vektor_p, dim);
+	printf("\nergibt als parallele Komponente zu b:\n\n");
+	parallel(vektor_a, vektor_b, vektor_parallel, dim, skalar);
+	ausgabe(vektor_parallel, dim);
 
-	printf("und als orthogonale Komponente zu b:\n\n");
-	orthogonal();
-	ausgabe()
+	printf("\nund als orthogonale Komponente zu b:\n\n");
+	orthogonal(vektor_a, vektor_orthogonal, vektor_parallel, dim);
+	ausgabe(vektor_orthogonal, dim);
 
 	return 0;
 }
@@ -112,23 +114,16 @@ float skalarprodukt(float vektor_a[], float vektor_b[], int dim) {
 	return skalar;
 }
 
-float parallel(float vektor_a[], float vektor_b[], float skalar, int dim) {
-
-	float a_b[10];
+void parallel(float vektor_a[], float vektor_b[], float vektor_p[], int dim, float skalar) {
 
 	for (int i = 0; i < dim; i++) {
-		a_b[i] = (skalar / skalarprodukt(vektor_b, vektor_b, dim)) * vektor_b[i];
+		vektor_p[i] = (skalar / skalarprodukt(vektor_b, vektor_b, dim)) * vektor_b[i];
 	}
-	return a_b[10];
 }
 
 void orthogonal(float vektor_a[], float vektor_o[], float vektor_p[], int dim) {
 
-	float a_o[10];
-
 	for (int i = 0; i < dim; i++) {
-		a_o[i] = vektor_a[i] - vektor_p[i];
+		vektor_o[i] = vektor_a[i] - vektor_p[i];
 	}
-
-	return a_o[10];
 }
