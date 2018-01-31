@@ -31,9 +31,12 @@ int main(void)
 
     for (int i = 0; i < anzahlRechnung; i++) {
         do {
+	//1. Schreiben Sie ein Programm, das vom Nutzer zwei Ganzzahlen abfragt
             printf("Geben Sie die erste Ganzzahl ein: \n");
             check = scanf("%lf", &a);
             flashStandardInput();
+	/*2. Stellen Sie nun sicher, dass die Zahlen größer Null sind und dass keine Fließkommazahlen 
+	sowie keine Zeichen eingegeben wurden. Ermöglichen Sie dem Nutzer bei falscher Eingabe solange neue Werte einzugeben, bis die Eingaben korrekt sind.*/
         } while (check == 0 || a <= 0 || a != (int)a);
 
         do { 
@@ -74,6 +77,9 @@ void flashStandardInput(void)
 	int intCharacter;
 	while ((intCharacter = getchar()) != '\n' && intCharacter != EOF);
 }
+
+/*Schreiben Sie nun eine Funktion teilen, die die erste durch die zweite Zahl teilt, dann das Ergebnis durch die zweite teilt, usw. 
+bis ein Teilen ohne Rest nicht mehr möglich ist. Nutzen Sie dazu eine for-Schleife.*/
 
 int teilen_for(int ersteZahl, int zweiteZahl) {
     int anzahl;
