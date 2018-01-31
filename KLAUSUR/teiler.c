@@ -28,12 +28,15 @@ int main(void) {
 	printf("------------------------------------------\n");
 
 	printf("\nBitte geben Sie die erste Zahl ein:");
-	while (1 != scanf("%f", &n1) || n1 != (int)n1 || n1 == 0) { //1 != ... ermöglicht speichern der Zahl || 
+	while (1 != scanf("%f", &n1) || n1 != (int)n1 || n1 == 0) { //1 != ... ermöglicht speichern der Zahl, Rückgabewert ist gleich 0, wenn der Typ eingegeben wird. || 
 		flashStandardInput(); 					//!= (int) selektiert Fließkommazahlen raus.
 			printf("Die Eingabe war fehlerhaft!\n");	//|| == 0 selektiert 0 raus
 			flashStandardInput();
 			printf("Bitte Versuchen Sie es erneut:");
 	}
+	
+	/*der Kopf wird immer durchlaufen, der Rumpf nur, wenn der Returnwert des Kopfes 1 ist. 
+	Und der Kopf ist in diesem Fall 1, wenn der Returnwert von scanf ungleich (!=) 1 ist*/
 
 	printf("\nBitte geben Sie die zweite Zahl ein:");
 	while (1 != scanf("%f", &n2) || n2 != (int)n2 || n2 == 0) {
