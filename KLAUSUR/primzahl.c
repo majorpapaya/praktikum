@@ -64,7 +64,7 @@ int pruefe_prim(int zahl) {
 	if (zahl == 1) return 0;
 	if (zahl == 2) return 1;
 
-	for (n = (int)sqrt(zahl); n > 2; n--) {
+	for (n = (int)sqrt(zahl); n >= 2; n--) {
 		if (zahl%n == 0) return 0;
 	}
 	return 1;
